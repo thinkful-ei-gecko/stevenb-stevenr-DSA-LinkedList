@@ -81,7 +81,27 @@ class LinkedList {
     if (currentNode === null) {
       return 'Key not found';
     } else {
-      currentNode = new _Node(item, currentNode);
+      let newNode = new _Node(item, previousNode.next);
+      previousNode.next = newNode;
+    }
+  }
+
+  insertAfter(item, key) {
+    if (!this.head)
+      return this.insertFirst(item);
+
+    let currentNode = this.head;
+    let previousNode = this.head;
+
+    while ((currentNode.value !== key) && (currentNode !== null)) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    if (currentNode === null) {
+      return 'Key not found';
+    } else {
+      let newNode = new _Node(item, currentNode.next);
+      currentNode.next = newNode;
     }
   }
 }
@@ -97,9 +117,11 @@ const main = () => {
 
   SLL.insertLast('Tauhida');
 
-  SLL.remove('squirrel');
+  // SLL.remove('squirrel');
+  SLL.insertBefore('Athena', 'Boomer');
+  SLL.insertAfter('Hotdog', 'Helo');
 
-  return SLL.find('Helo');
+  return SLL;
 
 };
 
