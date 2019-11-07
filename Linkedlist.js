@@ -271,3 +271,9 @@ const middleNode = (linkedList) => {
 };
 
 console.log(middleNode(main()));
+
+// 8.
+
+const cycleList = () => {
+
+};
