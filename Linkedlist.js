@@ -234,3 +234,25 @@ const reverseLinkedList = (linkedList) => {
 };
 
 console.log(reverseLinkedList(main()));
+
+// 6.
+
+const thirdFromEnd = (linkedList) => {
+  let currentNode = linkedList.head;
+
+  if (!currentNode)
+    return null;
+
+  if (currentNode.next.next === null)
+    return 'Linked List isn\'t long enough';
+
+  while (currentNode.next.next.next !== null) {
+    currentNode = currentNode.next;
+  }
+  return currentNode;
+}
+
+console.log(thirdFromEnd(main()));
+
+// 7.
+
