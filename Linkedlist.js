@@ -34,7 +34,7 @@ class LinkedList {
 
     while (currentNode.value !== item) {
       if (currentNode.next === null)
-        return null;
+        return 'Item does not exist';
       else
         currentNode = currentNode.next;
     }
@@ -63,4 +63,44 @@ class LinkedList {
     }
     previousNode.next = currentNode.next;
   }
+
+  insertBefore(item, key) {
+    if (!this.head)
+      return this.insertFirst(item);
+
+    if (this.head.value === key)
+      return this.insertFirst(item);
+
+    let currentNode = this.head;
+    let previousNode = this.head;
+
+    while ((currentNode.value !== key) && (currentNode !== null)) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    if (currentNode === null) {
+      return 'Key not found';
+    } else {
+      currentNode = new _Node(item, currentNode);
+    }
+  }
 }
+
+const main = () => {
+  const SLL = new LinkedList();
+
+  SLL.insertLast('Apollo');
+  SLL.insertLast('Boomer');
+  SLL.insertLast('Helo');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
+
+  SLL.insertLast('Tauhida');
+
+  SLL.remove('squirrel');
+
+  return SLL.find('Helo');
+
+};
+
+console.log(JSON.stringify(main()));
