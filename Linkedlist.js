@@ -91,10 +91,8 @@ class LinkedList {
       return this.insertFirst(item);
 
     let currentNode = this.head;
-    let previousNode = this.head;
 
     while ((currentNode.value !== key) && (currentNode !== null)) {
-      previousNode = currentNode;
       currentNode = currentNode.next;
     }
     if (currentNode === null) {
@@ -102,6 +100,33 @@ class LinkedList {
     } else {
       let newNode = new _Node(item, currentNode.next);
       currentNode.next = newNode;
+    }
+  }
+
+  insertAt(item, index) {
+    if (index < 0)
+      return 'Please choose a positive index';
+
+    if (!this.head)
+      return this.insertFirst(item);
+
+    if (this.head.value === index -1)
+      return this.insertFirst(item);
+
+    let counter = 0;
+    let currentNode = this.head;
+    let previousNode = this.head;
+
+    while ((counter !== index -1) && (currentNode !== null)) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+      counter++;
+    }
+    if (currentNode === null) {
+      return 'Index does not exist';
+    } else {
+      let newNode = new _Node(item, previousNode.next);
+      previousNode.next = newNode;
     }
   }
 }
@@ -120,6 +145,8 @@ const main = () => {
   // SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hotdog', 'Helo');
+  SLL.insertAt('Kat', 3);
+  SLL.remove('Tauhida');
 
   return SLL;
 
