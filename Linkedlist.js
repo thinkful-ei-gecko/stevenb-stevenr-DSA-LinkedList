@@ -256,3 +256,18 @@ console.log(thirdFromEnd(main()));
 
 // 7.
 
+const middleNode = (linkedList) => {
+  let slowPtr = linkedList.head;
+  let fastPtr = linkedList.head;
+
+  if (!linkedList)
+    return null;
+
+  while (fastPtr !== null && fastPtr.next !== null) {
+    fastPtr = fastPtr.next.next;
+    slowPtr = slowPtr.next;
+  }
+  return slowPtr;
+};
+
+console.log(middleNode(main()));
