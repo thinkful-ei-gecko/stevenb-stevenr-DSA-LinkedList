@@ -157,7 +157,80 @@ const display = () => {
 };
 
 const size = () => {
+  let counter = 1;
+  let currentNode = main().head.next;
 
+  if (!currentNode) {
+    return 0;
+  }
+
+  while (currentNode !== null) {
+    counter++;
+    currentNode = currentNode.next;
+  }
+  return counter;
+};
+
+const isEmpty = () => {
+  let currentNode = main().head;
+  if (!currentNode) {
+    return true;
+  }
+  return false;
+};
+
+const findPrevious = (item) => {
+  let currentNode = main().head;
+  let previousNode = main().head;
+
+  if (currentNode.value === item)
+    return 'The first node has the item.';
+
+  while (currentNode.value !== item && currentNode !== null) {
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+  }
+
+  if (currentNode === null) 
+    return 'Key not found';
+  else 
+    return previousNode;
+};
+
+const findLast = () => {
+  let currentNode = main().head;
+
+  if (!currentNode) {
+    return 'List does not exist';
+  }
+
+  while (currentNode.next !== null) {
+    currentNode = currentNode.next;
+  }
+  return currentNode;
 };
 
 display();
+console.log(size());
+console.log(isEmpty());
+console.log(findPrevious('Athena'));
+console.log(findLast());
+
+// 4. O(n^2); This function searches for the same value as the current head and removes it.
+
+// 5.
+
+const reverseLinkedList = (linkedList) => {
+  const reversedList = new LinkedList();
+
+  let currentNode = linkedList.head;
+
+  while (currentNode !== null) {
+    reversedList.insertFirst(currentNode.value);
+    currentNode = currentNode.next;
+  }
+
+  return JSON.stringify(reversedList);
+};
+
+console.log(reverseLinkedList(main()));
