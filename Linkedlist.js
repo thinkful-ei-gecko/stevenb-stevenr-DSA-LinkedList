@@ -149,7 +149,15 @@ const main = () => {
   SLL.remove('Tauhida');
 
   return SLL;
+};
+
+const display = () => {
+  let llDisplay = JSON.stringify(main());
+  console.log(llDisplay);
+};
+
+const size = () => {
 
 };
 
-console.log(JSON.stringify(main()));
+display();
